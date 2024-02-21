@@ -6,4 +6,9 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://astro-moon-landing.netlify.app/",
   integrations: [tailwind(), icon()],
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "vi"],
+  },
+  output: "server",
 });
