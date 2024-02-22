@@ -10,11 +10,11 @@ export default defineConfig({
   integrations: [tailwind(), icon()],
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "vi"]
+    locales: ["en", "vi"],
   },
   output: "server",
   adapter: vercel(),
   image: {
-    service: passthroughImageService()
-  }
+    service: passthroughImageService(),
+  },
 });

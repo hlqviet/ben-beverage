@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/vi/header.astro";
@@ -7,9 +8,13 @@ import Products from "~/components/vi/products.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
 
-const { generator, site } = Astro;
+const { generator, site, currentLocale, preferredLocale } = Astro;
 const image = new URL("healthy-foods-to-eat.jpg", site);
 const description = "Be healthy together.";
+
+if (preferredLocale && preferredLocale !== currentLocale) {
+  return Astro.redirect(getRelativeLocaleUrl(preferredLocale));
+}
 ---
 
 <!doctype html>
