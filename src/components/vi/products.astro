@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import ContentSection from "~/components/content-section.astro";
-import ShowcaseCard from "~/components/showcase-card.astro";
+import ProductCard from "~/components/product-card.astro";
 
 const featuredSites = await getCollection(
-  "showcase",
+  "products",
   ({ data }) => "featured" in data,
 );
 const orderedSites = featuredSites.sort(
@@ -12,19 +12,19 @@ const orderedSites = featuredSites.sort(
 );
 ---
 
-<ContentSection title="Showcase" id="showcase">
+<ContentSection title="Sản phẩm" id="products">
   <Fragment slot="lead">
-    Astro is <span class="text-primary">versatile</span>.{" "}
-    <span class="text-primary">Explore</span> what's possible and get{" "}
-    <span class="text-primary">inspired</span>.
+    Astro là một công cụ <span class="text-primary">linh hoạt</span>.{" "}
+    Hãy <span class="text-primary">khám phá</span> khả năng của nó và{" "}
+    <span class="text-primary">thỏa sức sáng tạo</span>.
   </Fragment>
   <div class="max-w-6xl space-y-2">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {orderedSites.map((site) => <ShowcaseCard site={site} />)}
+      {orderedSites.map((site) => <ProductCard site={site} />)}
     </div>
     <p class="text-right text-sm">
       <a class="text-primary" href="https://astro.build/showcase/">
-        ...and more &rarr;
+        ...và hơn nữa &rarr;
       </a>
     </p>
   </div>

@@ -1,30 +1,27 @@
 ---
-import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
 ---
 
-<ContentSection title="Just ship less" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="size-32" />
-  <Fragment slot="lead">
-    Astro is a new kind of site builder for the
-    <span class="text-primary">modern</span> web.
-    <span class="text-primary">Lightning-fast</span>
-    performance meets <span class="text-primary">powerful</span> developer experience.
-  </Fragment>
-  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-    <a
-      href="https://docs.astro.build/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:telescope" class="size-8" />
-      <span>Đọc tài liệu</span>
-    </a>
-    <a
-      href="https://astro.new/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:rocket" class="size-8" />
-      <span>Thử ngay</span>
-    </a>
+<ContentSection title="Giới thiệu" id="intro">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-4 lg:flex-row lg:justify-between"
+  >
+    <p class="lg:basis-1/2 lg:pr-4">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus
+      dictum ex, sed finibus ligula efficitur vel. Aliquam sapien massa, aliquet
+      sed dignissim id, <span class="font-bold text-primary">fermentum</span> quis
+      velit. Integer non ante non lectus lobortis sollicitudin a non quam. Nulla
+      facilisi. Sed pretium orci a molestie dapibus. In faucibus ex lobortis sapien
+      egestas blandit.
+      <span class="font-bold text-primary">Suspendisse</span> enim nulla, aliquet
+      sit amet magna at, ultrices suscipit eros. Pellentesque porttitor imperdiet
+      nisl, ut mattis libero sollicitudin in.
+    </p>
+    <iframe
+      class="aspect-video w-full lg:basis-1/2"
+      src="https://www.youtube.com/embed/tzXGb18G1TQ"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   </div>
 </ContentSection>
