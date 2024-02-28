@@ -15,14 +15,14 @@ const sizes = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
 <a class="group aspect-video hover:!text-default" href={product.data.url}>
   <figure class="relative h-full w-full overflow-hidden">
     <Image
-      class="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
+      class="h-full w-full object-contain transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
       src={product.data.image}
       widths={widths}
       sizes={sizes}
-      alt={`A screenshot of ${product.data.url}`}
+      alt={`An image of ${product.data.url}`}
     />
   </figure>
-  <div class="text-center font-bold text-xl">
+  <div class="text-center text-xs md:text-base">
     {product.data.name}
   </div>
 </a>
