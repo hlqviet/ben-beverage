@@ -3,29 +3,114 @@ import { getCollection } from "astro:content";
 import ContentSection from "~/components/content-section.astro";
 import ProductCard from "~/components/product-card.astro";
 
-const featuredSites = await getCollection(
-  "products",
-  ({ data }) => "featured" in data,
-);
-const orderedSites = featuredSites.sort(
-  (a, b) => a.data.featured! - b.data.featured!,
-);
+const products = await getCollection("products");
 ---
 
 <ContentSection title="Sản phẩm" id="products">
-  <Fragment slot="lead">
-    Astro là một công cụ <span class="text-primary">linh hoạt</span>.{" "}
-    Hãy <span class="text-primary">khám phá</span> khả năng của nó và{" "}
-    <span class="text-primary">thỏa sức sáng tạo</span>.
-  </Fragment>
-  <div class="max-w-6xl space-y-2">
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {orderedSites.map((site) => <ProductCard site={site} />)}
+  <div class="w-full max-w-6xl space-y-2">
+    <div role="tablist" class="tabs tabs-xs md:tabs-md lg:tabs-lg tabs-bordered">
+      <input
+        type="radio"
+        name="beverages"
+        role="tab"
+        class="tab"
+        aria-label="Bia"
+        checked
+      />
+      <div role="tabpanel" class="tab-content py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {
+            products
+              .filter(({ id }) => id.startsWith("beer"))
+              .map((product) => <ProductCard product={product} />)
+          }
+        </div>
+      </div>
+
+      <input
+        type="radio"
+        name="beverages"
+        role="tab"
+        class="tab"
+        aria-label="Nước ép"
+      />
+      <div role="tabpanel" class="tab-content py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {
+            products
+              .filter(({ id }) => id.startsWith("juice"))
+              .map((product) => <ProductCard product={product} />)
+          }
+        </div>
+      </div>
+
+      <input
+        type="radio"
+        name="beverages"
+        role="tab"
+        class="tab"
+        aria-label="Mojito"
+      />
+      <div role="tabpanel" class="tab-content py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {
+            products
+              .filter(({ id }) => id.startsWith("mojito"))
+              .map((product) => <ProductCard product={product} />)
+          }
+        </div>
+      </div>
+
+      <input
+        type="radio"
+        name="beverages"
+        role="tab"
+        class="tab whitespace-nowrap"
+        aria-label="Nước ngọt"
+      />
+      <div role="tabpanel" class="tab-content py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {
+            products
+              .filter(({ id }) => id.startsWith("soft-drink"))
+              .map((product) => <ProductCard product={product} />)
+          }
+        </div>
+      </div>
+
+      <input
+        type="radio"
+        name="beverages"
+        role="tab"
+        class="tab"
+        aria-label="Trà"
+      />
+      <div role="tabpanel" class="tab-content py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {
+            products
+              .filter(({ id }) => id.startsWith("tea"))
+              .map((product) => <ProductCard product={product} />)
+          }
+        </div>
+      </div>
+
+      <input
+        type="radio"
+        name="beverages"
+        role="tab"
+        class="tab"
+        aria-label="Nước"
+      />
+      <div role="tabpanel" class="tab-content py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {
+            products
+              .filter(({ id }) => id.startsWith("water"))
+              .map((product) => <ProductCard product={product} />)
+          }
+        </div>
+      </div>
     </div>
-    <p class="text-right text-sm">
-      <a class="text-primary" href="https://astro.build/showcase/">
-        ...và hơn nữa &rarr;
-      </a>
-    </p>
   </div>
 </ContentSection>

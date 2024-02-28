@@ -28,28 +28,23 @@ const navItems: NavItem[] = [
           }
         </ul>
       </nav>
-      <button
-        id="open-nav-button"
-        type="button"
-        class="btn sm:hidden"
-        aria-label="Navigation"
-      >
+      <label for="nav_toggle" class="btn btn-ghost sm:hidden" aria-label="Điều hướng">
         <Icon name="mdi:menu" class="size-8" />
-      </button>
+      </label>
       <ThemeSwitcher />
     </div>
-    <div id="menu-modal" class="modal hidden" aria-hidden="true">
+    <input type="checkbox" id="nav_toggle" class="modal-toggle" />
+    <div id="menu-modal" class="modal">
       <div class="fixed inset-0 bg-default px-8 py-4 text-default">
-        <div class="space-y-4" role="dialog" aria-modal="true">
+        <div class="space-y-4" role="dialog">
           <header class="text-right">
-            <button
-              id="close-nav-button"
-              type="button"
-              class="btn"
-              aria-label="Close navigation"
+            <label
+              for="nav_toggle"
+              class="btn btn-ghost"
+              aria-label="Đóng điều hướng"
             >
               <Icon name="mdi:close" class="size-8" />
-            </button>
+          </label>
           </header>
           <div class="flex justify-center">
             <Icon name="logomark" class="size-16" />
@@ -74,49 +69,14 @@ const navItems: NavItem[] = [
 </header>
 
 <script>
-  import MicroModal from "micromodal";
   import invariant from "tiny-invariant";
 
   const menuModalId = "menu-modal";
 
   const header = document.querySelector("#page-header") as HTMLElement;
   const menu = document.querySelector(`#${menuModalId} ul`);
-  const openNavButton = document.querySelector("#open-nav-button");
-  const closeNavButton = document.querySelector("#close-nav-button");
-
+  
   invariant(header, "header should not be null");
   invariant(menu, "menu should not be null");
-  invariant(openNavButton, "openNavButton should not be null");
-  invariant(closeNavButton, "closeNavButton should not be null");
 
-  const openMenu = () => {
-    MicroModal.show(menuModalId, { disableScroll: true });
-  };
-
-  const closeMenu = () => {
-    MicroModal.close(menuModalId);
-  };
-
-  openNavButton.addEventListener("click", openMenu);
-  closeNavButton.addEventListener("click", closeMenu);
-
-  menu.addEventListener("click", (event) => {
-    if ((event.target as HTMLElement).tagName === "A") {
-      closeMenu();
-    }
-  });
 </script>
-
-<noscript>
-  <style>
-    #open-nav-button {
-      display: none;
-    }
-  </style>
-</noscript>
-
-<style>
-  .modal.is-open {
-    @apply block;
-  }
-</style>
