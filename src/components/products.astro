@@ -18,7 +18,7 @@ const products = await getCollection("products");
         checked
       />
       <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {
             products
               .filter(({ id }) => id.startsWith("beer"))
@@ -35,7 +35,7 @@ const products = await getCollection("products");
         aria-label="Juice"
       />
       <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {
             products
               .filter(({ id }) => id.startsWith("juice"))
@@ -52,7 +52,7 @@ const products = await getCollection("products");
         aria-label="Mojito"
       />
       <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {
             products
               .filter(({ id }) => id.startsWith("mojito"))
@@ -69,7 +69,7 @@ const products = await getCollection("products");
         aria-label="Soft Drink"
       />
       <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {
             products
               .filter(({ id }) => id.startsWith("soft-drink"))
@@ -86,7 +86,7 @@ const products = await getCollection("products");
         aria-label="Tea"
       />
       <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {
             products
               .filter(({ id }) => id.startsWith("tea"))
@@ -103,7 +103,7 @@ const products = await getCollection("products");
         aria-label="Water"
       />
       <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {
             products
               .filter(({ id }) => id.startsWith("water"))
