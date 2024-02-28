@@ -4,11 +4,9 @@ const products = defineCollection({
   type: "data",
   schema: ({ image }) =>
     z.object({
-      title: z.string().min(1),
+      name: z.string(),
       image: image(),
       url: z.string().url(),
-      price: z.number().nonnegative(),
-      featured: z.number().min(1).optional(),
     }),
 });
 
