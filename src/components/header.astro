@@ -28,7 +28,11 @@ const navItems: NavItem[] = [
           }
         </ul>
       </nav>
-      <label for="nav_toggle" class="btn btn-ghost sm:hidden" aria-label="Navigation">
+      <label
+        for="nav_toggle"
+        class="btn btn-ghost sm:hidden"
+        aria-label="Navigation"
+      >
         <Icon name="mdi:menu" class="size-8" />
       </label>
       <ThemeSwitcher />
@@ -44,7 +48,7 @@ const navItems: NavItem[] = [
               aria-label="Close navigation"
             >
               <Icon name="mdi:close" class="size-8" />
-          </label>
+            </label>
           </header>
           <div class="flex justify-center">
             <Icon name="logomark" class="size-16" />
@@ -75,8 +79,7 @@ const navItems: NavItem[] = [
 
   const header = document.querySelector("#page-header") as HTMLElement;
   const menu = document.querySelector(`#${menuModalId} ul`);
-  
+
   invariant(header, "header should not be null");
   invariant(menu, "menu should not be null");
-
 </script>
