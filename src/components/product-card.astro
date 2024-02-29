@@ -12,7 +12,7 @@ const widths = [450, 800];
 const sizes = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
 ---
 
-<a class="group aspect-square" href={product.data.url} target="_blank">
+<div class="group aspect-square">
   <figure class="relative h-full w-full overflow-hidden">
     <Image
       class="h-full w-full object-contain transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
@@ -25,4 +25,9 @@ const sizes = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
   <div class="text-center text-xs md:text-base">
     {product.data.name}
   </div>
-</a>
+  <div class="text-center">
+    <a class="btn btn-secondary btn-sm" href={product.data.url} target="_blank"
+      >Buy now</a
+    >
+  </div>
+</div>
