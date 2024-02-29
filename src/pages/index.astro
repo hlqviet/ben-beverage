@@ -9,7 +9,7 @@ import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
 
 const { generator, site, currentLocale, preferredLocale } = Astro;
-const description = "Cool drinks";
+const description = "Nature drinks";
 
 if (preferredLocale && preferredLocale !== currentLocale) {
   return Astro.redirect(getRelativeLocaleUrl(preferredLocale));
