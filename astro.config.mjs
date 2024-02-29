@@ -12,7 +12,7 @@ export default defineConfig({
     defaultLocale: "en",
     locales: ["en", "vi"],
   },
-  output: "server",
+  output: "hybrid",
   adapter: cloudflare(),
   image: {
     service: passthroughImageService(),
