@@ -6,6 +6,7 @@ import Header from "~/components/vi/header.astro";
 import Intro from "~/components/vi/intro.astro";
 import Products from "~/components/vi/products.astro";
 import Splash from "~/components/splash.astro";
+import GoToTopButton from "~/components/go-to-top-button.astro";
 import "~/styles/index.css";
 
 const { generator, site, currentLocale, preferredLocale } = Astro;
@@ -68,5 +69,6 @@ if (preferredLocale && preferredLocale !== currentLocale) {
       <Products />
     </div>
     <Footer />
+    <GoToTopButton />
   </body>
 </html>
