@@ -6,7 +6,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-moon-landing.netlify.app/",
+  site: "https://benbeverage.pages.dev/",
   integrations: [tailwind(), icon()],
   i18n: {
     defaultLocale: "en",
