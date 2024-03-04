@@ -8,23 +8,20 @@ const products = await getCollection("products");
 
 <ContentSection title="Products" id="products">
   <div class="w-full max-w-6xl space-y-2">
-    <div
-      role="tablist"
-      class="tabs tabs-bordered tabs-xs md:tabs-md lg:tabs-lg"
-    >
+    <div role="tablist" class="tab-sm tabs md:tabs-lg [&>.tab]:px-2">
       <input
         type="radio"
         name="beverages"
         role="tab"
-        class="tab"
-        aria-label="Beer"
+        class="tab whitespace-nowrap"
+        aria-label="Soft Drink"
         checked
       />
       <div role="tabpanel" class="tab-content py-10">
         <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
           {
             products
-              .filter(({ id }) => id.startsWith("beer"))
+              .filter(({ id }) => id.startsWith("soft-drink"))
               .map((product) => <ProductCard product={product} />)
           }
         </div>
@@ -52,13 +49,13 @@ const products = await getCollection("products");
         name="beverages"
         role="tab"
         class="tab"
-        aria-label="Mojito"
+        aria-label="Beer"
       />
       <div role="tabpanel" class="tab-content py-10">
         <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
           {
             products
-              .filter(({ id }) => id.startsWith("mojito"))
+              .filter(({ id }) => id.startsWith("beer"))
               .map((product) => <ProductCard product={product} />)
           }
         </div>
@@ -68,14 +65,14 @@ const products = await getCollection("products");
         type="radio"
         name="beverages"
         role="tab"
-        class="tab whitespace-nowrap"
-        aria-label="Soft Drink"
+        class="tab"
+        aria-label="Mojito"
       />
       <div role="tabpanel" class="tab-content py-10">
         <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
           {
             products
-              .filter(({ id }) => id.startsWith("soft-drink"))
+              .filter(({ id }) => id.startsWith("mojito"))
               .map((product) => <ProductCard product={product} />)
           }
         </div>
