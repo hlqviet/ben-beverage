@@ -4,13 +4,13 @@ import { Icon } from "astro-icon/components";
 
 <button
   id="go-to-top-button"
-  class="btn btn-circle btn-outline fixed bottom-6 right-6 hidden"
+  class="font-medium rounded-full p-4 text-center border border-inherit hover:bg-offset fixed bottom-6 right-6 hidden"
 >
-  <Icon class="size-1/2" name="mdi:arrow-up" />
+  <Icon class="size-full" name="mdi:arrow-up" />
 </button>
 
 <script>
-  const goToTopButton = document.getElementById("go-to-top-button");
+  const goToTopButton = document.getElementById("go-to-top-button")!;
 
   goToTopButton.addEventListener("click", () => {
     document.body.scrollTop = 0;
