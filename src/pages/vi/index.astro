@@ -2,15 +2,16 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
-import Header from "~/components/vi/header.astro";
-import Intro from "~/components/vi/intro.astro";
-import Products from "~/components/vi/products.astro";
+import Header from "~/components/header.astro";
+import Intro from "~/components/intro.astro";
+import Products from "~/components/products.astro";
 import Splash from "~/components/splash.astro";
 import GoToTopButton from "~/components/go-to-top-button.astro";
+import IntroVideo from "~/components/intro-video.astro";
 import "~/styles/index.css";
 
 const { generator, site, currentLocale, preferredLocale } = Astro;
-const description = "Nature drinks";
+const description = "Nước uống từ thiên nhiên";
 
 if (preferredLocale && preferredLocale !== currentLocale) {
   return Astro.redirect(getRelativeLocaleUrl(preferredLocale));
@@ -48,13 +49,23 @@ if (preferredLocale && preferredLocale !== currentLocale) {
         document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
       }
 
+      if (document.documentElement.dataset.theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (event) => {
           if (!localStorage.getItem("theme")) {
-            document.documentElement.dataset.theme = event.matches
-              ? "dark"
-              : "light";
+            if (event.matches) {
+              document.documentElement.classList.add("dark");
+              document.documentElement.dataset.theme = "dark";
+            } else {
+              document.documentElement.classList.remove("dark");
+              document.documentElement.dataset.theme = "light";
+            }
           }
         });
     </script>
@@ -64,11 +75,16 @@ if (preferredLocale && preferredLocale !== currentLocale) {
   >
     <Header />
     <Splash />
-    <div class="space-y-24 px-8 py-32">
-      <Intro />
+    <IntroVideo />
+    <div class="space-y-24 px-2 py-6 md:px-8">
       <Products />
+      <Intro />
     </div>
     <Footer />
     <GoToTopButton />
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
+    ></script>
   </body>
 </html>

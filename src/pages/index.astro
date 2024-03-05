@@ -49,13 +49,23 @@ if (preferredLocale && preferredLocale !== currentLocale) {
         document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
       }
 
+      if (document.documentElement.dataset.theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (event) => {
           if (!localStorage.getItem("theme")) {
-            document.documentElement.dataset.theme = event.matches
-              ? "dark"
-              : "light";
+            if (event.matches) {
+              document.documentElement.classList.add("dark");
+              document.documentElement.dataset.theme = "dark";
+            } else {
+              document.documentElement.classList.remove("dark");
+              document.documentElement.dataset.theme = "light";
+            }
           }
         });
     </script>
