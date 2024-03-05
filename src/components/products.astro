@@ -51,7 +51,7 @@ const tabs = [
           tabs.map(({ id, label }) => (
             <li role="presentation">
               <button
-                class="inline-block px-4 py-2 text-default hover:text-current"
+                class="inline-block px-4 py-2 text-default hover:!text-default aria-selected:!text-default"
                 id={`${id}-tab`}
                 data-tabs-target={`#${id}`}
                 type="button"
