@@ -4,113 +4,83 @@ import ContentSection from "~/components/content-section.astro";
 import ProductCard from "~/components/product-card.astro";
 
 const products = await getCollection("products");
+const tabs = [
+  {
+    id: "soft-drink",
+    label: "Soft Drink",
+    items: products.filter(({ id }) => id.startsWith("soft-drink")),
+  },
+  {
+    id: "juice",
+    label: "Juice",
+    items: products.filter(({ id }) => id.startsWith("juice")),
+  },
+  {
+    id: "beer",
+    label: "Beer",
+    items: products.filter(({ id }) => id.startsWith("beer")),
+  },
+  {
+    id: "mojito",
+    label: "Mojito",
+    items: products.filter(({ id }) => id.startsWith("mojito")),
+  },
+  {
+    id: "tea",
+    label: "Tea",
+    items: products.filter(({ id }) => id.startsWith("tea")),
+  },
+  {
+    id: "water",
+    label: "Water",
+    items: products.filter(({ id }) => id.startsWith("water")),
+  },
+];
 ---
 
 <ContentSection title="Products" id="products">
   <div class="w-full max-w-6xl space-y-2">
-    <div role="tablist" class="tab-sm tabs md:tabs-lg [&>.tab]:px-2">
-      <input
-        type="radio"
-        name="beverages"
-        role="tab"
-        class="tab whitespace-nowrap"
-        aria-label="Soft Drink"
-        checked
-      />
-      <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-          {
-            products
-              .filter(({ id }) => id.startsWith("soft-drink"))
-              .map((product) => <ProductCard product={product} />)
-          }
-        </div>
-      </div>
-
-      <input
-        type="radio"
-        name="beverages"
-        role="tab"
-        class="tab"
-        aria-label="Juice"
-      />
-      <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-          {
-            products
-              .filter(({ id }) => id.startsWith("juice"))
-              .map((product) => <ProductCard product={product} />)
-          }
-        </div>
-      </div>
-
-      <input
-        type="radio"
-        name="beverages"
-        role="tab"
-        class="tab"
-        aria-label="Beer"
-      />
-      <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-          {
-            products
-              .filter(({ id }) => id.startsWith("beer"))
-              .map((product) => <ProductCard product={product} />)
-          }
-        </div>
-      </div>
-
-      <input
-        type="radio"
-        name="beverages"
-        role="tab"
-        class="tab"
-        aria-label="Mojito"
-      />
-      <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-          {
-            products
-              .filter(({ id }) => id.startsWith("mojito"))
-              .map((product) => <ProductCard product={product} />)
-          }
-        </div>
-      </div>
-
-      <input
-        type="radio"
-        name="beverages"
-        role="tab"
-        class="tab"
-        aria-label="Tea"
-      />
-      <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-          {
-            products
-              .filter(({ id }) => id.startsWith("tea"))
-              .map((product) => <ProductCard product={product} />)
-          }
-        </div>
-      </div>
-
-      <input
-        type="radio"
-        name="beverages"
-        role="tab"
-        class="tab"
-        aria-label="Water"
-      />
-      <div role="tabpanel" class="tab-content py-10">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-          {
-            products
-              .filter(({ id }) => id.startsWith("water"))
-              .map((product) => <ProductCard product={product} />)
-          }
-        </div>
-      </div>
+    <div class="mb-8">
+      <ul
+        class="-mb-px flex flex-wrap justify-center font-medium text-sm"
+        id="products-tab"
+        data-tabs-toggle="#products-tab-content"
+        role="tablist"
+      >
+        {
+          tabs.map(({ id, label }) => (
+            <li role="presentation">
+              <button
+                class="inline-block px-4 py-2 text-default hover:text-current"
+                id={`${id}-tab`}
+                data-tabs-target={`#${id}`}
+                type="button"
+                role="tab"
+                aria-controls={id}
+                aria-selected="false"
+              >
+                {label}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div id="products-tab-content">
+      {
+        tabs.map(({ id, items }) => (
+          <div
+            class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            id={id}
+            role="tabpanel"
+            aria-labelledby={`${id}-tab`}
+          >
+            {items.map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </ContentSection>
