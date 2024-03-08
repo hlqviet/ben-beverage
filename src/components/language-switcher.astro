@@ -1,9 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getRelativeLocaleUrlList, getRelativeLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const currentLocale = Astro.currentLocale ?? "en";
-const currentLocaleUrl = getRelativeLocaleUrl(currentLocale);
+const locales = [
+  { id: "en", label: "🇺🇸 English" },
+  { id: "vi", label: "🇻🇳 Tiếng Việt" },
+];
 ---
 
 <button
@@ -35,31 +38,32 @@ const currentLocaleUrl = getRelativeLocaleUrl(currentLocale);
   class="z-10 hidden divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
 >
   <ul
-    class="py-2 uppercase text-gray-700 text-sm dark:text-gray-200"
+    class="py-2 text-gray-700 text-sm dark:text-gray-200"
     aria-labelledby="languageButton"
   >
     {
-      getRelativeLocaleUrlList().map((url) => {
-        if (url === currentLocaleUrl)
+      locales.map(({ id, label }) => {
+        if (id === currentLocale) {
           return (
             <li>
               <a
-                href={getRelativeLocaleUrl(currentLocale)}
+                href={getRelativeLocaleUrl(id)}
                 class="block bg-gray-100 px-4 py-2 dark:bg-gray-600 dark:text-white"
                 aria-current="page"
               >
-                {currentLocale}
+                {label}
               </a>
             </li>
           );
+        }
 
         return (
           <li>
             <a
-              href={url}
+              href={id}
               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              {url.split("/")[1] || "en"}
+              {label}
             </a>
           </li>
         );
