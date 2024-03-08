@@ -17,14 +17,18 @@ import { Icon } from "astro-icon/components";
     document.documentElement.scrollTop = 0;
   });
 
-  window.addEventListener("scroll", () => {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      goToTopButton.classList.remove("hidden");
-    } else {
-      goToTopButton.classList.add("hidden");
-    }
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        goToTopButton.classList.remove("hidden");
+      } else {
+        goToTopButton.classList.add("hidden");
+      }
+    },
+    { passive: true },
+  );
 </script>
