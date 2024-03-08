@@ -6,7 +6,7 @@ export interface Props {
   children: string;
 }
 
-const { heading, children } = Astro.props;
+const { heading } = Astro.props;
 ---
 
 <ContentSection id="intro">
@@ -14,7 +14,7 @@ const { heading, children } = Astro.props;
     <article class="prose flex max-w-full flex-col dark:prose-invert lg:block">
       <header><h2 class="mt-0">{heading}</h2></header>
       <p>
-        {children}
+        <slot />
       </p>
     </article>
   </div>
