@@ -10,12 +10,8 @@ import GoToTopButton from "~/components/go-to-top-button.astro";
 import IntroVideo from "~/components/intro-video.astro";
 import "~/styles/index.css";
 
-const { generator, site, currentLocale, preferredLocale } = Astro;
+const { generator, site } = Astro;
 const description = "Nature drinks";
-
-if (preferredLocale && preferredLocale !== currentLocale) {
-  return Astro.redirect(getRelativeLocaleUrl(preferredLocale));
-}
 ---
 
 <!doctype html>
