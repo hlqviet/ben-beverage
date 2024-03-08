@@ -1,44 +1,17 @@
 ---
-import { getCollection } from "astro:content";
 import ContentSection from "~/components/content-section.astro";
 import ProductCard from "~/components/product-card.astro";
+import type { ProductTabItem } from "~/types";
 
-const products = await getCollection("products");
-const tabs = [
-  {
-    id: "soft-drink",
-    label: "Soft Drink",
-    items: products.filter(({ id }) => id.startsWith("soft-drink")),
-  },
-  {
-    id: "juice",
-    label: "Juice",
-    items: products.filter(({ id }) => id.startsWith("juice")),
-  },
-  {
-    id: "beer",
-    label: "Beer",
-    items: products.filter(({ id }) => id.startsWith("beer")),
-  },
-  {
-    id: "mojito",
-    label: "Mojito",
-    items: products.filter(({ id }) => id.startsWith("mojito")),
-  },
-  {
-    id: "tea",
-    label: "Tea",
-    items: products.filter(({ id }) => id.startsWith("tea")),
-  },
-  {
-    id: "water",
-    label: "Water",
-    items: products.filter(({ id }) => id.startsWith("water")),
-  },
-];
+export interface Props {
+  title: string;
+  tabs: ProductTabItem[];
+}
+
+const { title, tabs } = Astro.props;
 ---
 
-<ContentSection title="Products" id="products">
+<ContentSection title={title} id="products">
   <div class="w-full max-w-6xl space-y-2">
     <div class="mb-8">
       <ul

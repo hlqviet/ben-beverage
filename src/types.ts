@@ -1,14 +1,4 @@
-export interface CompatibilityItem {
-  icon: string;
-  title: string;
-  url: string;
-}
-
-export interface FeatureItem {
-  description: string;
-  icon: string;
-  title: string;
-}
+import { CollectionEntry } from "astro:content";
 
 export interface FooterLink {
   description: string;
@@ -19,4 +9,10 @@ export interface FooterLink {
 export interface NavItem {
   title: string;
   url: string;
+}
+
+export interface ProductTabItem {
+  id: string;
+  label: string;
+  items: CollectionEntry<"products">[];
 }

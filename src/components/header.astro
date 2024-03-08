@@ -3,10 +3,11 @@ import { Icon } from "astro-icon/components";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 
-const navItems: NavItem[] = [
-  { title: "Introduction", url: "#intro" },
-  { title: "Products", url: "#products" },
-];
+export interface Props {
+  navItems: NavItem[];
+}
+
+const { navItems } = Astro.props;
 ---
 
 <header
