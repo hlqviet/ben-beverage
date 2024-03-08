@@ -53,7 +53,7 @@ const tabs: ProductTabItem[] = [
 ---
 
 <!doctype html>
-<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+<html lang="en" class="h-full motion-safe:scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -74,19 +74,16 @@ const tabs: ProductTabItem[] = [
     <script is:inline>
       const themeSaved = localStorage.getItem("theme");
 
-      if (themeSaved) {
-        document.documentElement.dataset.theme = themeSaved;
+      if (themeSaved === "dark") {
+        document.documentElement.classList.add("dark");
       } else {
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
-      }
 
-      if (document.documentElement.dataset.theme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
+        if (prefersDark) {
+          document.documentElement.classList.add("dark");
+        }
       }
 
       window
@@ -95,10 +92,8 @@ const tabs: ProductTabItem[] = [
           if (!localStorage.getItem("theme")) {
             if (event.matches) {
               document.documentElement.classList.add("dark");
-              document.documentElement.dataset.theme = "dark";
             } else {
               document.documentElement.classList.remove("dark");
-              document.documentElement.dataset.theme = "light";
             }
           }
         });

@@ -1,4 +1,4 @@
-[data-theme="light"] {
+:root {
   --color-primary: theme("colors.pink.500");
   --color-secondary: theme("colors.indigo.500");
   --color-text: theme("colors.gray.900");
@@ -8,7 +8,7 @@
   --color-border: theme("colors.gray.900" / 10%);
 }
 
-[data-theme="dark"] {
+.dark {
   --color-primary: theme("colors.pink.400");
   --color-secondary: theme("colors.indigo.400");
   --color-text: theme("colors.gray.50");
